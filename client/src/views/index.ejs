@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./includes/head.ejs') %>
+  </head>
+  <body>
+    <header><%- include('./includes/navigation.ejs') %></header>
+
+    <section class="mb-32 text-center lg:text-left">
+      <h2 class="py-8 mb-12 text-center text-3xl font-bold">Bookstore</h2>
+      <% if (books.length > 0) { %>
+      <div class="mx-auto w-[60%] grid gap-x-6 lg:grid-cols-3">
+        <% books.forEach(book => { %>
+        <div class="py-8 mb-12 lg:mb-0">
+          <div
+            class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <img src="<%= book.imageUrl %>" class="w-full" />
+            <a href="/books/<%= book.id %>">
+              <div
+                class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,0.2)]"
+              ></div>
+            </a>
+          </div>
+          <h5 class="mb-4 text-lg font-bold"><%= book.title %></h5>
+          <div
+            class="mb-4 flex items-center justify-center text-sm font-medium text-black dark:text-danger-500 lg:justify-start"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-5 h-5 mr-2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
+              />
+            </svg>
+            Author: <%= book.author %>
+          </div>
+          <p class="font-normal text-black dark:text-neutral-600">
+            Publisher: <%= book.publisher %>
+          </p>
+        </div>
+        <% }) %>
+      </div>
+      <% } else { %>
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center">
+          <p
+            class="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white"
+          >
+            No Books Found!
+          </p>
+        </div>
+      </div>
+      <% } %>
+    </section>
+
+    <%- include('./includes/end.ejs') %>
+  </body>
+</html>

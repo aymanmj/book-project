@@ -1,0 +1,13 @@
+Ayman Abubaker
+==================
+Teminal commandline :-
+npm run dev
+==================
+
+Database name: booksDb
+Table name: books
+
+data template in books.txt file included
+
+
+

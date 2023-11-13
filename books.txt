@@ -1,0 +1,22 @@
+===Database booksdb
+
+== Table structure for table books
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int(11)|No|
+|title|varchar(255)|Yes|NULL
+|author|varchar(255)|Yes|NULL
+|publisher|text|Yes|NULL
+|publishYear|date|Yes|NULL
+|imageUrl|varchar(255)|No|
+|description|text|Yes|NULL
+== Dumping data for table books
+
+|1|To Kill A Mockingbird|Harper Lee|J. B. Lippincott &amp; Co.|1960-01-01|https://cdn.penguin.co.uk/dam-assets/books/9781784752637/9781784752637-jacket-large.jpg|A novel before its time, Harper Lee’s Pulitzer-prize winner addresses issues of race, inequality and segregation with both levity and compassion. Told through the eyes of loveable rogues Scout and Jem, it also created one of literature’s most beloved heroes – Atticus Finch, a man determined to right the racial wrongs of the Deep South.
+|2|The Great Gatsby|F. Scott Fitzgerald|Charles Scribner&#039;s Sons|1925-01-01|https://cdn.penguin.co.uk/dam-assets/books/9780141182636/9780141182636-jacket-large.jpg|Jay Gatsby, the enigmatic millionaire who throws decadent parties but doesn’t attend them, is one of the great characters of American literature. This is F. Scott Fitzgerald at his most sparkling and devastating.
+|3|Brave New World|Aldous Huxley|Harper Perennial Modern Classics|1932-01-01|https://cdn.penguin.co.uk/dam-assets/books/9781784870140/9781784870140-jacket-large.jpg|One of the greatest and most prescient dystopian novels ever written, this should be on everyone’s must-read list.
+|4|I Capture the Castle|Dodie Smith|William Heinemann|1948-01-01|https://cdn.penguin.co.uk/dam-assets/books/9780141371504/9780141371504-jacket-large.jpg|Cassandra Mortmain’s upbringing in a crumbling castle with her eccentric family may not be everyone’s experience, but we can guarantee her coming-of-age story with all its enchanting and disenchanting moments will resonate for many.
+|5|Crime and Punishment|Fyodor Dostoyevsky|The Russian Messenger|1866-01-01|https://cdn.penguin.co.uk/dam-assets/books/9780140449136/9780140449136-jacket-large.jpg|This novel is a masterful and completely captivating depiction of a man experiencing a profound mental unraveling. No amount of ethical bargaining on Raskolnikov’s part can free him from the parasitic guilt nested in his soul. A brilliant read if you loved Breaking Bad.
+|6|The Secret History|Donna Tartt|Alfred A. Knopf|1992-01-01|https://cdn.penguin.co.uk/dam-assets/books/9780241621905/9780241621905-jacket-large.jpg|Donna Tartt&#039;s book follows a clique of smart, attractive students at an elite university and an outsider who finds himself forced to conceal a dark secret. A gripping and tense read.

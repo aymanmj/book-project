@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./includes/Head.ejs') %>
+  </head>
+  <body>
+    <header><%- include('./includes/Navigation.ejs') %></header>
+    <!-- <main> -->
+    <section class="bg-white dark:bg-gray-900">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+        <h1
+          class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+        >
+          This is great
+        </h1>
+        <p
+          class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400"
+        >
+          Welcome to templating using - EJS - أهلاً ومرحباً بكم في نطاق تعلم ال
+        </p>
+        <p
+          class="text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400"
+        >
+          Embedded JavaScript templating
+        </p>
+
+        <div class="mb-2 text-center lg:py-8">
+          <p class="text-lg font-semibold lg:text-xl dark:text-gray-400">
+            My name is User and I'm Desktop/Web developer
+          </p>
+        </div>
+        <div class="mb-2 text-center lg:py-8">
+          <p class="text-lg font-semibold lg:text-xl dark:text-gray-400"></p>
+        </div>
+
+        <!-- <div class="mx-auto w-[60%] text-center lg:py-16"></div> -->
+
+        <% if (allbooks.length > 0) { %>
+        <div class="mx-auto w-[60%] grid grid-cols-2 md:grid-cols-3 gap-4">
+          <% allbooks.forEach(book => { %>
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="<%= book.imageUrl %>"
+              alt=""
+            />
+            <h5
+              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              <%= book.title %>
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Author: <%= book.author %>
+            </p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Publisher: <%= book.publisher %>
+            </p>
+          </div>
+          <% }) %>
+        </div>
+        <% } %>
+      </div>
+    </section>
+    <%- include('./includes/End.ejs') %>
+  </body>
+</html>
