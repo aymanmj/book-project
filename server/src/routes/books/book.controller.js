@@ -1,5 +1,19 @@
 const Book = require("../../models/books.model");
 
+function getIndex(req, res, next) {
+  Book.findAll({
+    where: {
+      bookState: true,
+    },
+  })
+    .then((allbooks) => {
+      res.status(200).json(allbooks);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 function getAllBooks(req, res, next) {
   Book.findAll({
     where: {
@@ -17,7 +31,7 @@ function getAllBooks(req, res, next) {
 
 function postAddBook(req, res, next) {
   const mybook = req.body;
-  console.log(mybook.book.publishYear);
+  //console.log(mybook.book.publishYear);
   // Save Data recieved from client in books table
   Book.create({
     title: mybook.book.title,
@@ -39,10 +53,56 @@ function postAddBook(req, res, next) {
     });
 }
 
+function getEditBook(req, res, next) {
+  const editMode = req.query.edit;
+  if (!editMode) {
+    return res.redirect("/");
+  }
+  const bkId = req.query.bookId;
+  Book.findByPk(bkId)
+    .then((book) => {
+      if (!book) {
+        return res.redirect("/");
+      }
+      res.status(200).json(book);
+    })
+    .catch((err) => console.log(err));
+}
+
+function postEditBook(req, res, next) {
+  const editbook = req.body;
+  const bkId = editbook.book.id;
+  const updatedTitle = editbook.book.title;
+  const updatedAuthor = editbook.book.author;
+  const updatedPublisher = editbook.book.publisher;
+  const updatedPublishYear = editbook.book.publishYear;
+  const updatedImageUrl = editbook.book.imageUrl;
+  const updatedDesc = editbook.book.description;
+  Book.findByPk(bkId)
+    .then((book) => {
+      book.title = updatedTitle;
+      book.author = updatedAuthor;
+      book.publisher = updatedPublisher;
+      book.publishYear = updatedPublishYear;
+      book.imageUrl = updatedImageUrl;
+      book.description = updatedDesc;
+      book.bookState = true;
+      return book.save();
+    })
+    .then((result) => {
+      console.log("BOOK UPDATED!");
+      res.redirect("/books");
+    })
+    .catch((err) => console.log(err));
+}
+
 module.exports = {
+  getIndex,
   getAllBooks,
   // getAddBook,
+  getEditBook,
   postAddBook,
+  postEditBook,
 };
 
 // const models = require("../models");
