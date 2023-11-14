@@ -16,23 +16,23 @@ function getAllBooks(req, res, next) {
 }
 
 function postAddBook(req, res, next) {
-  const book = req.body;
-
-  // Send a response with the data
+  const mybook = req.body;
+  console.log(mybook.book.publishYear);
+  // Save Data recieved from client in books table
   Book.create({
-    title: book.title,
-    author: book.author,
-    publisher: book.publisher,
-    publishYear: book.publishYear,
-    imageUrl: book.imageUrl,
-    description: book.description,
+    title: mybook.book.title,
+    author: mybook.book.author,
+    publisher: mybook.book.publisher,
+    publishYear: mybook.book.publishYear,
+    imageUrl: mybook.book.imageUrl,
+    description: mybook.book.description,
     bookState: true,
   })
     .then((result) => {
       // console.log(result);
       console.log("Book Added!");
-      res.status(201).json(book);
-      res.redirect("/");
+      res.status(201).json(mybook);
+      //res.redirect("/");
     })
     .catch((err) => {
       console.log(err);

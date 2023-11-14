@@ -22,32 +22,37 @@ booksRouter.get("/books/add-book", async (req, res) => {
   });
 });
 
-// // Use the axios.post() method to send data to the server
-// axios
-//   .post(
-//     "http://localhost:8000/books/add-book",
-//     {
-//       title: req.body.title,
-//       author: req.body.author,
-//       publisher: req.body.publisher,
-//       publisherYear: req.body.publisherYear,
-//       imageUrl: req.body.imageUrl,
-//       description: req.body.description,
-//       bookState: true,
-//     },
-//     {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   )
-//   // Handle the response from the server
-//   .then((response) => {
-//     console.log("Response data:", response.data);
-//   })
-//   // Handle the error from the server
-//   .catch((error) => {
-//     console.error("Error:", error.message);
-//   });
+booksRouter.post("/books/add-book", async (req, res) => {
+  // Use the axios.post() method to send data to the server
+  axios
+    .post(
+      "http://localhost:8000/books/add-book",
+      {
+        book: {
+          title: req.body.title,
+          author: req.body.author,
+          publisher: req.body.publisher,
+          publishYear: req.body.publishYear,
+          imageUrl: req.body.imageUrl,
+          description: req.body.description,
+          bookState: true,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    )
+    // Handle the response from the server
+    .then((response) => {
+      console.log("Response data:", response.data);
+      res.redirect("/");
+    })
+    // Handle the error from the server
+    .catch((error) => {
+      console.error("Error:", error.message);
+    });
+});
 
 module.exports = booksRouter;
