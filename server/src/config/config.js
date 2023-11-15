@@ -31,5 +31,6 @@ module.exports = {
     password: process.env.MYSQL_DB_PASSWORD,
     host: process.env.MYSQL_DB_HOST,
     port: parseInt(process.env.MYSQL_DB_PORT),
+    timezone: process.env.MYSQL_DB_TIMEZONE || "+02:00",
   },
 };

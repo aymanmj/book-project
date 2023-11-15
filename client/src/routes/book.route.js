@@ -19,8 +19,21 @@ booksRouter.get("/books", async (req, res) => {
       const books = response.data;
       res.render("./books", { books, pageTitle: "All Books", path: "/books" });
     });
-  //   const response = await fetch("http://localhost:8000/books");
-  //const books = await response.json();
+});
+
+booksRouter.get("/books/book/:id", async (req, res) => {
+  const response = await axios
+    .get("http://localhost:8000/books/book/:id", {
+      params: { id: req.params.id },
+    })
+    .then((response) => {
+      const mybook = response.data;
+      res.render("./book-detail", {
+        book: mybook,
+        pageTitle: mybook.title,
+        path: "/books/book",
+      });
+    });
 });
 
 booksRouter.get("/books/add-book", async (req, res) => {
@@ -123,6 +136,30 @@ booksRouter.post("/books/edit-book", async (req, res) => {
     });
 });
 
+booksRouter.post("/books/book/delete-book", async (req, res) => {
+  axios
+    .post(
+      "http://localhost:8000/books/book/delete-book",
+      {
+        book: {
+          id: req.body.bookId,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    ) // Handle the response from the server
+    .then((response) => {
+      console.log("Response data:", response.data);
+      res.redirect("/books");
+    })
+    // Handle the error from the server
+    .catch((error) => {
+      console.error("Error:", error.message);
+    });
+});
 module.exports = booksRouter;
 
 // await axios({

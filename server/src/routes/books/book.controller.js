@@ -29,9 +29,19 @@ function getAllBooks(req, res, next) {
   //return res.status(200).json(books);
 }
 
+function getBook(req, res, next) {
+  const bookid = req.query.id;
+  Book.findByPk(bookid)
+    .then((mybook) => {
+      res.status(200).json(mybook);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 function postAddBook(req, res, next) {
   const mybook = req.body;
-  //console.log(mybook.book.publishYear);
   // Save Data recieved from client in books table
   Book.create({
     title: mybook.book.title,
@@ -96,13 +106,30 @@ function postEditBook(req, res, next) {
     .catch((err) => console.log(err));
 }
 
+function postDeleteBook(req, res, next) {
+  const deletebook = req.body;
+  const bkId = deletebook.book.id;
+  const updatedFlag = false;
+  Book.findByPk(bkId)
+    .then((book) => {
+      book.bookState = updatedFlag;
+      return book.save();
+    })
+    .then((result) => {
+      console.log("BOOK ARCHIVED!");
+      res.redirect("/books");
+    })
+    .catch((err) => console.log(err));
+}
+
 module.exports = {
   getIndex,
   getAllBooks,
-  // getAddBook,
+  getBook,
   getEditBook,
   postAddBook,
   postEditBook,
+  postDeleteBook,
 };
 
 // const models = require("../models");
