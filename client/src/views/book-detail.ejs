@@ -3,49 +3,52 @@
   <head>
     <%- include('./includes/head.ejs') %>
   </head>
-  <body class="bg-gray-100 dark:bg-neutral-400">
+  <body>
     <header><%- include('./includes/navigation.ejs') %></header>
     <div class="container my-24 mx-auto md:px-6">
       <section class="mb-32 text-center md:text-left">
         <div
           class="mx-auto block w-[85%] rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
         >
-          <div class="flex flex-wrap items-center px-6 py-8">
-            <div
-              class="block w-full shrink-0 grow-0 basis-auto md:w-4/12 lg:flex"
-            >
+          <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content pl-6 md:px-6 flex-col lg:flex-row">
               <img
                 src="<%= book.imageUrl %>"
-                alt=""
-                class="w-full rounded-t-lg md:rounded-tr-none md:rounded-bl-lg"
+                class="w-fit rounded-t-lg shadow-2xl"
               />
-            </div>
-            <div class="w-full shrink-0 grow-0 basis-auto md:w-8/12">
-              <div class="px-6 py-12 md:px-12">
-                <h2 class="mb-6 text-3xl font-bold">
-                  <span class="text-danger dark:text-danger-700"
-                    ><%= book.title %></span
-                  >
-                </h2>
-                <p class="mb-6 pb-2 text-gray-800 dark:text-white">
+              <div>
+                <h1 class="py-6 pl-6 mb-6 text-4xl font-bold">
+                  <%= book.title %>
+                </h1>
+                <h2
+                  class="py-6 pl-6 pb-2 text-2xl text-gray-800 dark:text-white"
+                >
                   <span class="font-bold">Author: </span><%= book.author %>
-                </p>
-                <p class="mb-6 pb-2 text-gray-800 dark:text-white">
+                </h2>
+                <h2
+                  class="py-6 pl-6 pb-2 text-2xl text-gray-800 dark:text-white"
+                >
                   <span class="font-bold">Publisher: </span><%= book.publisher
                   %>
-                </p>
-                <p class="mb-6 pb-2 text-gray-800 dark:text-white">
-                  <span class="font-bold">Publication Date: </span><%=
+                </h2>
+
+                <h2
+                  class="py-6 pl-6 pb-2 text-2xl text-gray-800 dark:text-white"
+                >
+                  <span class="font-bold">Publication date: </span><%=
                   book.publishYear %>
-                </p>
-                <p class="mb-6 pb-2 text-justify text-gray-800 dark:text-white">
+                </h2>
+
+                <p
+                  class="py-6 pl-6 mb-6 pb-2 text-justify text-2xl text-gray-800 dark:text-white"
+                >
                   <span class="font-bold">Description: </span><%=
                   book.description %>
                 </p>
                 <button
                   type="button"
                   id="go-back"
-                  class="inline-block rounded-full bg-blue-600 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-blue-800 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]"
+                  class="btn btn-primary ml-6"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                   onclick="{history.back()}"
